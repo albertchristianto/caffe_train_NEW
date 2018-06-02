@@ -480,28 +480,28 @@ message CPMTransformationParameter {
   optional uint32 gray = 34 [default = 0];
   optional uint32 np_in_lmdb = 35 [default = 16];
   optional bool transform_body_joint = 38 [default = true];
-  // Image augmentation
+  // Image augmentation/////////////////////////////////////////////////////
   // Specify the range of scaling factor for doing resizing
-  optional float min_scaling_factor = 36 [default = 0.75];
-  optional float max_scaling_factor = 37 [default = 1.50];
+  //optional float min_scaling_factor = 36 [default = 0.75];
+  //optional float max_scaling_factor = 37 [default = 1.50];
   // Specify the angle for doing rotation
-  optional uint32 max_rotation_angle = 39 [default = 0];
+  //optional uint32 max_rotation_angle = 39 [default = 0];
   // Specify the contrast, brightness, smooth and color shift for augmentation
-  optional bool contrast_brightness_adjustment = 40 [default = false];
-  optional bool smooth_filtering = 41 [default = false];
-  optional float min_contrast = 42 [default = 0.8];
-  optional float max_contrast = 43 [default = 1.2];
-  optional uint32 max_brightness_shift = 44 [default = 5];
-  optional float max_smooth = 45 [default = 6];
-  optional uint32 max_color_shift = 46 [default = 0];
+  optional bool contrast_brightness_adjustment = 36 [default = false];
+  optional bool smooth_filtering = 37 [default = false];
+  optional float min_contrast = 39 [default = 0.8];
+  optional float max_contrast = 40 [default = 1.2];
+  optional uint32 max_brightness_shift = 41 [default = 5];
+  optional float max_smooth = 42 [default = 6];
+  optional uint32 max_color_shift = 43 [default = 0];
   
   // Min side resizing, keep aspect ratio
-  optional uint32 min_side_min = 47 [default = 0];
-  optional uint32 min_side_max = 48 [default = 0];
-  optional uint32 min_side = 49 [default = 0];
+  //optional uint32 min_side_min = 47 [default = 0];
+  //optional uint32 min_side_max = 48 [default = 0];
+  //optional uint32 min_side = 49 [default = 0];
   
-  optional float apply_probability = 50 [default = 0.5];
-  optional bool debug_params = 51 [default = false];
+  optional float apply_probability = 44 [default = 0.5];
+  optional bool debug_params = 45 [default = false];
 }
 
 // Message that stores parameters shared by loss layers
