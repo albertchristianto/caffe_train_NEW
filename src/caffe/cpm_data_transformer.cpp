@@ -1507,11 +1507,11 @@ void resize(cv::Mat& cv_img, int smallest_side) {
 template<typename Dtype>
 void CPMDataTransformer<Dtype>::Transform(const cv::Mat& img,
                                        Blob<Dtype>* transformed_blob) {
-  const int min_side = param_.min_side();
-  const int min_side_min = param_.min_side_min();
-  const int min_side_max = param_.min_side_max();
+  //const int min_side = param_.min_side();
+  //const int min_side_min = param_.min_side_min();
+  //const int min_side_max = param_.min_side_max();
   const int crop_size = param_.crop_size();
-  const int rotation_angle = param_.max_rotation_angle();
+  //const int rotation_angle = param_.max_rotation_angle();
   const float min_contrast = param_.min_contrast();
   const float max_contrast = param_.max_contrast();
   const int max_brightness_shift = param_.max_brightness_shift();
@@ -1533,11 +1533,11 @@ void CPMDataTransformer<Dtype>::Transform(const cv::Mat& img,
 
   float current_prob;
 
-  const bool do_rotation = rotation_angle > 0 && phase_ == TRAIN;
+  //const bool do_rotation = rotation_angle > 0 && phase_ == TRAIN;
 
-  const bool do_resize_to_min_side = min_side > 0;
-  const bool do_resize_to_min_side_min = min_side_min > 0;
-  const bool do_resize_to_min_side_max = min_side_max > 0;
+  //const bool do_resize_to_min_side = min_side > 0;
+  //const bool do_resize_to_min_side_min = min_side_min > 0;
+  //const bool do_resize_to_min_side_max = min_side_max > 0;
 
   const bool do_mirror = param_.mirror() && phase_ == TRAIN && Rand(2);
 
@@ -1553,27 +1553,27 @@ void CPMDataTransformer<Dtype>::Transform(const cv::Mat& img,
 
   cv::Mat cv_img = img;
 
-  int current_angle = 0;
-  if (do_rotation) {
-    current_angle = Rand(rotation_angle*2 + 1) - rotation_angle;
-    if (current_angle)
-      rotate(cv_img, current_angle);
+  //int current_angle = 0;
+  //if (do_rotation) {
+    //current_angle = Rand(rotation_angle*2 + 1) - rotation_angle;
+    //if (current_angle)
+      //rotate(cv_img, current_angle);
       
-  }
+  //}
 
   // resizing and crop according to min side, preserving aspect ratio
-  if (do_resize_to_min_side) {
-     resize(cv_img, min_side);
+  //if (do_resize_to_min_side) {
+     //resize(cv_img, min_side);
      //random_crop(cv_img, min_side);
-  }
+  //}
   
-  if (do_resize_to_min_side_min && do_resize_to_min_side_max) {
+  //if (do_resize_to_min_side_min && do_resize_to_min_side_max) {
      //std::cout << min_side_min << " "<<min_side_max<<std::endl;
-     int min_side_length = min_side_min + Rand(min_side_max - min_side_min + 1);
-     resize(cv_img, min_side_length);
+     //int min_side_length = min_side_min + Rand(min_side_max - min_side_min + 1);
+     //resize(cv_img, min_side_length);
      //crop_center(cv_img, min_side, min_side);
      //random_crop(cv_img, min_side_length);
-  }
+  //}
 
   // apply color shift
   if (do_color_shift) {
@@ -1628,10 +1628,10 @@ void CPMDataTransformer<Dtype>::Transform(const cv::Mat& img,
   if (debug_params && phase_ == TRAIN) {
     LOG(INFO) << "----------------------------------------";
 
-    if (do_rotation) {
-        LOG(INFO) << "* parameter for rotation: ";
-        LOG(INFO) << "  current rotation angle: " << current_angle;
-    }
+    //if (do_rotation) {
+        //LOG(INFO) << "* parameter for rotation: ";
+        //LOG(INFO) << "  current rotation angle: " << current_angle;
+    //}
     if (do_brightness) {
 	  LOG(INFO) << "* parameter for contrast adjustment: ";
 	  LOG(INFO) << "  alpha: " << alpha << ", beta: " << beta;
