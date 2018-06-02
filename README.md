@@ -3,6 +3,45 @@ Caffe Framework for training CMU Human Pose with data augmentation layer
 This caffe is made on 02/06/2018, based on this 2 version of caffe:
 * [caffe_train](https://github.com/CMU-Perceptual-Computing-Lab/caffe_train) from [@ZheC](https://github.com/ZheC)
 * [caffe-augmentation](https://github.com/twtygqyy/caffe-augmentation) from [@twtygqyy](https://github.com/twtygqyy)
+I modify [cpm_data_transformer.cpp](https://github.com/albertchristianto/caffe_train_NEW/blob/master/src/caffe/cpm_data_transformer.cpp)(data augmentation layer), so it can change the contrast, brightness, color shift, and smooth filtering on training image data.
+
+# How to Use
+This is the example to specify your layer:
+```
+layer {
+  name: "data"
+  type: "CPMData"
+  top: "data"
+  top: "label"
+  data_param {
+    source: "*YOUR PATH TO LMDB FILE*"
+    batch_size: 10
+    backend: LMDB
+  }
+  cpm_transform_param {
+    stride: 8
+    max_rotate_degree: 40
+    visualize: false
+    crop_size_x: 368
+    crop_size_y: 368
+    scale_prob: 1
+    scale_min: 0.5
+    scale_max: 1.1
+    target_dist: 0.6
+    center_perterb_max: 40
+    do_clahe: false
+    num_parts: 56
+    np_in_lmdb: 17
+    contrast_brightness_adjustment: true
+    smooth_filtering: true
+    min_contrast: 0.8
+    max_contrast: 1.2
+    max_smooth: 6
+    max_color_shift: 20
+    apply_probability: 0.5   
+  }
+}
+```
 
 # Caffe
 
