@@ -1475,7 +1475,7 @@ void CPMDataTransformer<Dtype>::Transform(const vector<cv::Mat> & mat_vector,
   }
 }
 
-void rotate(cv::Mat& src, int angle) {
+/*void rotate(cv::Mat& src, int angle) {
     // get rotation matrix for rotating the image around its center
     cv::Point2f center(src.cols / 2.0, src.rows / 2.0);
     cv::Mat rot = cv::getRotationMatrix2D(center, angle, 1.0);
@@ -1502,7 +1502,7 @@ void resize(cv::Mat& cv_img, int smallest_side) {
         dsize = cv::Size(smallest_side, new_size);
     }
     cv::resize(cv_img, cv_img, dsize);
-}
+}*/
 
 template<typename Dtype>
 void CPMDataTransformer<Dtype>::Transform(const cv::Mat& img,
